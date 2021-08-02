@@ -1,4 +1,5 @@
 # Mvvm
+自己学习记录jetpack Mvvm模式开发
 ```C
 allprojects {
   repositories {
