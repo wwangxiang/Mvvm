@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.kotlin.helper.navigation;
 
 import android.content.Context;
@@ -14,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleEventObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.navigation.FloatingWindow;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -23,11 +40,11 @@ import androidx.navigation.NavigatorProvider;
 
 import com.kotlin.helper.R;
 
+
 /**
  * Navigator that uses {@link DialogFragment#show(FragmentManager, String)}. Every
  * destination using this Navigator must set a valid DialogFragment class name with
  * <code>android:name</code> or {@link Destination#setClassName(String)}.
- * @author user
  */
 @Navigator.Name("dialog")
 public final class DialogFragmentNavigator extends Navigator<DialogFragmentNavigator.Destination> {
@@ -39,11 +56,15 @@ public final class DialogFragmentNavigator extends Navigator<DialogFragmentNavig
     private final FragmentManager mFragmentManager;
     private int mDialogCount = 0;
 
-    private final LifecycleEventObserver mObserver = (source, event) -> {
-        if (event == Lifecycle.Event.ON_STOP) {
-            DialogFragment dialogFragment = (DialogFragment) source;
-            if (!dialogFragment.requireDialog().isShowing()) {
-                NavHostFragment.findNavController(dialogFragment).popBackStack();
+    private LifecycleEventObserver mObserver = new LifecycleEventObserver() {
+        @Override
+        public void onStateChanged(@NonNull LifecycleOwner source,
+                                   @NonNull Lifecycle.Event event) {
+            if (event == Lifecycle.Event.ON_STOP) {
+                DialogFragment dialogFragment = (DialogFragment) source;
+                if (!dialogFragment.requireDialog().isShowing()) {
+                    NavHostFragment.findNavController(dialogFragment).popBackStack();
+                }
             }
         }
     };

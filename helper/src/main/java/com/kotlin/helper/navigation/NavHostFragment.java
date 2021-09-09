@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.kotlin.helper.navigation;
 
 import android.content.Context;
@@ -110,9 +126,7 @@ public class NavHostFragment extends Fragment implements NavHost {
     private NavHostController mNavController;
     private Boolean mIsPrimaryBeforeOnCreate = null;
 
-    /**
-     * State that will be saved and restored
-     * */
+    // State that will be saved and restored
     private int mGraphId;
     private boolean mDefaultNavHost;
 
@@ -136,7 +150,7 @@ public class NavHostFragment extends Fragment implements NavHost {
      */
     @NonNull
     public static NavHostFragment create(@NavigationRes int graphResId,
-                                                                       @Nullable Bundle startDestinationArgs) {
+                                         @Nullable Bundle startDestinationArgs) {
         Bundle b = null;
         if (graphResId != 0) {
             b = new Bundle();
@@ -193,7 +207,7 @@ public class NavHostFragment extends Fragment implements NavHost {
         super.onCreate(savedInstanceState);
         final Context context = requireContext();
 
-        mNavController = new NavHostController(context);
+        mNavController = new NavHostController(requireContext());
         mNavController.setLifecycleOwner(this);
         mNavController.setOnBackPressedDispatcher(requireActivity().getOnBackPressedDispatcher());
         // Set the default state - this will be updated whenever

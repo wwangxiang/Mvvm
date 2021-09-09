@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navation"
+    app:startDestination="@id/mainfragment">
+
+    <fragment
+        android:id="@+id/mainfragment"
+        android:name="com.kotlin.mvvm.ui.fragment.MainFragment"
+        android:label="mainfragment">
+<!--        <action-->
+<!--            android:id="@+id/action_mainfragment_to_NewsFragment"-->
+<!--            app:destination="@id/NewsFragment"-->
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/ArticleFragment"
+        android:name="com.kotlin.mvvm.ui.fragment.ArticleFragment"
+        android:label="ArticleFragment" />
+
+    <fragment
+        android:id="@+id/GanHuoFragment"
+        android:name="com.kotlin.mvvm.ui.fragment.GanHuoFragment"
+        android:label="GanHuoFragment" />
+
+    <fragment
+        android:id="@+id/GirlFragment"
+        android:name="com.kotlin.mvvm.ui.fragment.GirlFragment"
+        android:label="GirlFragment" />
+
+</navigation>

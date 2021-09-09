@@ -12,7 +12,7 @@ import android.view.View
  * @param interval 时间间隔 默认0.5秒
  * @param onClick 点击触发的方法
  */
-fun setOnclickNoRepeat(vararg views: View?, interval: Long = 500, onClick: (View) -> Unit) {
+fun setOnclickNoRepeat(vararg views: View?, interval: Long = 2000, onClick: (View) -> Unit) {
     views.forEach {
         it?.clickNoRepeat(interval = interval) { view ->
             onClick.invoke(view)
@@ -26,7 +26,7 @@ fun setOnclickNoRepeat(vararg views: View?, interval: Long = 500, onClick: (View
  * @param action 执行方法
  */
 var lastClickTime = 0L
-fun View.clickNoRepeat(interval: Long = 500, action: (view: View) -> Unit) {
+fun View.clickNoRepeat(interval: Long = 2000, action: (view: View) -> Unit) {
     setOnClickListener {
         val currentTime = System.currentTimeMillis()
         if (lastClickTime != 0L && (currentTime - lastClickTime < interval)) {

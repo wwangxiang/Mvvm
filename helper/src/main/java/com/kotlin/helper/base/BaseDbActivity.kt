@@ -2,7 +2,11 @@ package com.kotlin.helper.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.FragmentController
+import androidx.fragment.app.FragmentHostCallback
 import com.noober.background.BackgroundLibrary
 import java.lang.reflect.ParameterizedType
 
@@ -26,6 +30,7 @@ abstract class BaseDbActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseVm
     /**
      * 创建DataBinding
      */
+    @Suppress("UNCHECKED_CAST")
     private fun initDataBind() {
         //利用反射 根据泛型得到 ViewDataBinding
         val superClass = javaClass.genericSuperclass

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mvvm</string>
+    <string name="string_main">首页</string>
 </resources>
