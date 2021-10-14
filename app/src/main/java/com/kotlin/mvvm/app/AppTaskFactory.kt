@@ -19,7 +19,6 @@ import com.kotlin.mvvm.BuildConfig
 import com.kotlin.mvvm.R
 import com.kotlin.mvvm.app.api.NetHttpClient
 import com.kotlin.mvvm.ui.activity.ErrorActivity
-import com.kotlin.mvvm.ui.activity.MainActivity
 import com.kotlin.mvvm.ui.activity.SplashActivity
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
